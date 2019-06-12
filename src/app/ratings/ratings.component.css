@@ -1,0 +1,13 @@
+ /* tbody tr:nth-of-type(odd) {
+    background-color:#ccc;
+  }  */
+  .selected {
+    background-color: #15CD59 !important;
+    color: white;
+  }
+  /* tr:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+    cursor: pointer;
+  } */
+ 

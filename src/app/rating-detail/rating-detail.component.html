@@ -1,0 +1,33 @@
+
+
+<div *ngIf="ratings">
+  <div>  
+  </div>
+    <div>
+        <h2>History ratings for {{ratings[0].Country | uppercase}}</h2>
+        <table>
+          <thead>
+            <tr>
+                <td>Agency</td>
+              <td>Rating</td>
+              <td>Outlook</td>
+              <td>Date</td>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+        <!-- <tr *ngFor="let rating of ratings" (click)="onSelect(rating)" [class.selected]="rating===selectedRating"> -->
+          <tr *ngFor="let rating of ratings">
+              <td>{{rating.Agency}}</td>
+        <td>{{rating.Rating}}</td>
+        <td>{{rating.Outlook}}</td>
+        <td>{{rating.Date}}</td>
+       
+        
+        </tr>
+          </tbody>
+        </table>
+        </div>
+    
+    <button (click)="goBack()">go back</button>  
