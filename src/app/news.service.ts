@@ -18,6 +18,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class NewsService {
-
-  constructor() { }
+  private newsUrl = "https://api.tradingeconomics.com/news/";
+  constructor(private http:HttpClient) { }
+  getLatestNews():Observable<News[]>{
+    return this.http.get<News[]>(this.newsUrl,httpOptions);
+  }
 }

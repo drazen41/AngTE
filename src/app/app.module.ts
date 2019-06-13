@@ -15,6 +15,7 @@ import { RatingSearchComponent } from './rating-search/rating-search.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
+import { IndicatorComponent } from './indicator/indicator.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewsComponent } from './news/news.component';
     RatingSearchComponent,
     HomeComponent,
     NewsComponent,
+    IndicatorComponent,
 
   ],
   imports: [
