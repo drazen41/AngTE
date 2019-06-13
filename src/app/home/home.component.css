@@ -60,3 +60,9 @@
       min-width: 30px;
     }
   }
+  div {
+      padding: 10px;
+  }
+  li {
+      list-style-type: none;
+  }
