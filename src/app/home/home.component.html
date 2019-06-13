@@ -6,7 +6,15 @@
     </div>
     <div style="float: left; width: 40%;">Middle Stuff</div>
     <div style="float: left; width: 20%;">
-      <app-dashboard></app-dashboard>
+        <h3>Top Ratings</h3>
+        <div class="grid grid-pad">
+          <a *ngFor="let rating of ratings" class="col-1-4"
+            routerLink="/detail/{{rating.Country}}" >
+            <div class="module rating">
+              <h4>{{rating.Country}}</h4>
+            </div>
+          </a>
+        </div>
     </div>
     <br style="clear: left;" />
    </div>
