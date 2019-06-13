@@ -5,9 +5,11 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {RatingDetailComponent} from './rating-detail/rating-detail.component';
 import {HomeComponent} from './home/home.component';
 import {NewsComponent} from './news/news.component';
+import {IndicatorComponent} from './indicator/indicator.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'indicators', component: IndicatorComponent },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

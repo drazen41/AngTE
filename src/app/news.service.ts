@@ -10,7 +10,7 @@ import {catchError,map,tap,filter} from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type' :'application/json',
-    'Authorization':'Client guest:guest'
+    'Authorization':'Client rflo8xtosclgl3i:e46covymlcpjx2z'
   })  
 };
 
@@ -19,8 +19,15 @@ const httpOptions = {
 })
 export class NewsService {
   private newsUrl = "https://api.tradingeconomics.com/news/";
+  private newsCountryUrl = "https://api.tradingeconomics.com/news/country/";
   constructor(private http:HttpClient) { }
   getLatestNews():Observable<News[]>{
-    return this.http.get<News[]>(this.newsUrl,httpOptions);
+    return this.http.get<News[]>(this.newsUrl,httpOptions)
+    .pipe(
+      tap(_ => console.log('console - fetched news' )));
+    
+  }
+  getNewsByCountry(country:string):Observable<News[]>{
+    return this.http.get<News[]>(this.newsCountryUrl + country,httpOptions);
   }
 }

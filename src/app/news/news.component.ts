@@ -12,10 +12,16 @@ export class NewsComponent implements OnInit {
   constructor(private newsService:NewsService) { }
 
   ngOnInit() {
-    this.getLatestNews();
+    //this.getLatestNews();
+    this.getNewsByCountry();
   }
   getLatestNews():void {
     this.newsService.getLatestNews().subscribe(data => this.news = data);
+    //console.log(this.news);
+  }
+  getNewsByCountry():void {
+    this.newsService.getNewsByCountry("mexico").subscribe(data => this.news = data);
+    
   }
 
 }

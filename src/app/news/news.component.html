@@ -1,8 +1,12 @@
 <div >
-  <!-- <ul *ngFor="let n for news">
-    <li>{{n.ID}}
+  <ul *ngFor="let n of news">
+    <li *ngIf="n.title">
+      <h4> {{n.title}} - {{n.date | date:'dd.MM.yyyy hh:mm'}}</h4>
+      <h5>Category - {{n.category}}</h5>
+      <p>{{n.description}}</p>
+    </li>
   </ul>
-   -->
-   {{news}}
+  
+  
 </div>
  

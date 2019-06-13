@@ -1,3 +1,39 @@
-<p>
-  indicator works!
-</p>
+ <!-- <ul >
+<li *ngFor="let i of sortIndicators('-LatestValueDate') ">
+  <h4>{{i.Title}}</h4>
+  <h5>{{i.Category}}</h5>
+  <span>{{i.LatestValue}} - {{i.LatestValueDate | date:"dd.MM.yyyy"}}</span>
+</li>
+</ul>  -->
+<h6></h6>
+<table>
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Category Group</td>
+      <td>Category</td>
+      <td>Latest Value</td>
+      <td>Latest Value Date</td>
+      <td>Source</td>
+      <td>Unit</td>
+      <td>Frequency</td>
+      <td>Previous Value</td>
+      <td>Previous Value Date</td>
+    </tr>
+  </thead>
+  <!-- sortIndicators('-LatestValueDate') -->
+  <tbody *ngFor="let i of  indicators">
+<tr >
+<td>{{i.Title}}</td>
+<td>{{i.CategoryGroup}}</td>
+<td>{{i.Category}}</td>
+<td>{{i.LatestValue}}</td>
+<td>{{i.LatestValueDate | date:"dd.MM.yyyy" }}</td>
+<td>{{ i.Source}}</td>
+<td>{{i.Unit}}</td>
+<td>{{i.Frequency}}</td>
+<td>{{i.PreviousValue}}</td>
+<td>{{i.PreviousValueDate | date:"dd.MM.yyyy"}}</td>
+</tr>
+  </tbody>
+</table>
