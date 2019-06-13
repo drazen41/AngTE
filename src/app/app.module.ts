@@ -13,6 +13,7 @@ import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {NgHttpLoaderModule} from 'ng-http-loader';
 import { RatingSearchComponent } from './rating-search/rating-search.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MessagesComponent,
     DashboardComponent,
     RatingSearchComponent,
+    HomeComponent,
 
   ],
   imports: [
