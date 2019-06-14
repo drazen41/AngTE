@@ -24,7 +24,6 @@
   </thead>
   <!-- sortIndicators('-LatestValueDate') -->
   <!-- /indicator/{{i.Country.split(' ').join('-')}}/{{i.Category.split(' ').join('-')}} -->
-  /indicator/{{i.Country}}/{{i.Category}}
   <tbody >
 <tr *ngFor="let i of  indicators" routerLink="/indicator/{{i.Country.split(' ').join('-')}}/{{i.Category.split(' ').join('-')}}">
 <td>{{i.Title}}</td>

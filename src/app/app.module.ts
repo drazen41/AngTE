@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.co
     NgxSpinnerModule,
     NgxUiLoaderModule,
     NgHttpLoaderModule.forRoot(),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
