@@ -6,14 +6,16 @@ import {RatingDetailComponent} from './rating-detail/rating-detail.component';
 import {HomeComponent} from './home/home.component';
 import {NewsComponent} from './news/news.component';
 import {IndicatorComponent} from './indicator/indicator.component';
+import {IndicatorDetailComponent} from './indicator-detail/indicator-detail.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'indicators', component: IndicatorComponent },
+  { path: 'indicator/:country/:indicator', component: IndicatorDetailComponent },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'detail/:country', component: RatingDetailComponent },
+  { path: 'rating/detail/:country', component: RatingDetailComponent },
   {path:'ratings',component:RatingsComponent}
 ];
 

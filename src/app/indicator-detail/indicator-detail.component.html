@@ -1,0 +1,17 @@
+<h3>History of {{indicatorHistory[0].Category | uppercase}} for {{indicatorHistory[0].Country | uppercase}}</h3>
+<table>
+  <thead>
+    <tr>
+      <td>DateTime</td>
+      <td>Value</td>
+      <td>Frequency</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let id of indicatorHistory ">
+      <td>{{id.DateTime | date:"dd.MM.yyyy" }}</td>
+      <td>{{id.Value }}</td>
+      <td>{{id.Frequency}}</td>
+    </tr>
+  </tbody>
+</table>

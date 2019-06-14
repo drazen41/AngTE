@@ -29,7 +29,7 @@ pagination
     </tr>
   </thead>
   <tbody  >
-  <tr *ngFor="let rating of ratings" routerLink="/detail/{{rating.Country}}">
+  <tr *ngFor="let rating of ratings" routerLink="/rating/detail/{{rating.Country}}">
 <td><span > {{rating.Country | uppercase}}</span> </td>
 <td>{{rating.TE}}</td>
 <td>{{rating.TE_Outlook}}</td>
