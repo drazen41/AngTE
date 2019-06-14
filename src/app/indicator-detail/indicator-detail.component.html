@@ -1,20 +1,10 @@
 <h3>History of {{indicatorHistory[0].Category | uppercase}} for {{indicatorHistory[0].Country | uppercase}}</h3>
-<ngx-charts-line-chart
-[view]="view"
-[scheme]="colorScheme"
-[results]="multy"
-[gradient]="gradient"
-[xAxis]="showXAxis"
-[yAxis]="showYAxis"
-[legend]="showLegend"
-[showXAxisLabel]="showXAxisLabel"
-[showYAxisLabel]="showYAxisLabel"
-[xAxisLabel]="xAxisLabel"
-[yAxisLabel]="yAxisLabel"
-[autoScale]="autoScale"
-[timeline]="timeline"
-(select)="onSelect($event)">
-</ngx-charts-line-chart>
+<!-- <x-chartist
+[type]="type"
+[data]="data"
+[options]="options"
+[events]="events"
+></x-chartist> -->
 <table>
   <thead>
     <tr>

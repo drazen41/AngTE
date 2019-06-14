@@ -18,6 +18,7 @@ import { NewsComponent } from './news/news.component';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { ChartistModule } from 'ng-chartist';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     NgxUiLoaderModule,
     NgHttpLoaderModule.forRoot(),
     AgGridModule.withComponents([]),
-    NgxChartsModule
+    NgxChartsModule,
+    ChartistModule // add ChartistModule to your imports
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,72 +7,69 @@ import {TEIndicatorDetail} from '../TEIndicatorDetail';
 import {IndicatorService} from '../indicator.service';
 import {OrderBy} from '../OrderBy';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {  IBarChartOptions,IChartistAnimationOptions,IChartistData} from 'chartist';
+import { ChartEvent, ChartType } from 'ng-chartist';
+import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-indicator-detail',
   templateUrl: './indicator-detail.component.html',
   styleUrls: ['./indicator-detail.component.css']
+  
 })
 export class IndicatorDetailComponent implements OnInit {
   private indicatorHistory:TEIndicatorDetail[];
   public order = "DateTime";
-  view: any[] = [700,400];
-  multi: any[] = [
-    {
-      name: 'Cyan',
-      series: [
-        {
-          name: 5,
-          value: 2650
-        },
-        {
-          name: 10,
-          value: 2800      },
-        {
-          name: 15,
-          value: 2000
-        }
-      ]
-    },
-    {
-      name: 'Yellow',
-      series: [
-        {
-          name: 5,
-          value: 2500
-        },
-        {
-          name: 10,
-          value: 3100
-        },
-        {
-          name: 15,
-          value: 2350
-        }
-      ]
-    }
-  ];
-  // options
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Number';
-  showYAxisLabel = true;
-  yAxisLabel = 'Color Value';
-  timeline = true;
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  type: ChartType = 'Bar';
+  data: IChartistData = {
+    labels: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ],
+    series: [
+      [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+      [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+    ]
   };
-  single:any[];
+  options: IBarChartOptions = {
+    axisX: {
+      showGrid: false
+    },
+    height: 300
+  };
+  events: ChartEvent = {
+    draw: (data) => {
+      if (data.type === 'bar') {
+        data.element.animate({
+          y2: <IChartistAnimationOptions>{
+            dur: '0.5s',
+            from: data.y1,
+            to: data.y2,
+            easing: 'easeOutQuad'
+          }
+        });
+      }
+    }
+  };
+  
+  
   constructor(private indicatorService:IndicatorService,
     private route:ActivatedRoute,
     private location:Location,) { }
 
   ngOnInit() {
     this.getIndicatorHistory();
-    this.single = this.indicatorHistory;
+    
   }
   getIndicatorHistory():void{
     const country = this.route.snapshot.paramMap.get('country').split('-').join(' ');
