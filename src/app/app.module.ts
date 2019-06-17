@@ -19,6 +19,7 @@ import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { ChartistModule } from 'ng-chartist';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ChartistModule } from 'ng-chartist';
     NgHttpLoaderModule.forRoot(),
     AgGridModule.withComponents([]),
     NgxChartsModule,
+    ChartsModule,
     ChartistModule // add ChartistModule to your imports
   ],
   providers: [],

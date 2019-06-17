@@ -43,4 +43,10 @@ export class IndicatorService {
      .pipe(tap(() => console.log(url)));
     
   }
+  getIndicatorHistory1(country:string, indicator:string) {
+    var url = this.indicatorHistoryUrl + country + "/indicator/" + indicator;
+     return  this.http.get(this.indicatorHistoryUrl + country +"/indicator/" + indicator,httpOptions )
+     .pipe(tap(() => console.log(url)),map(res => res));
+    
+  }
 }

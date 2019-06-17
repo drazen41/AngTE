@@ -1,11 +1,29 @@
-<h3>History of {{indicatorHistory[0].Category | uppercase}} for {{indicatorHistory[0].Country | uppercase}}</h3>
+<!-- <h3>History of {{indicatorHistory[0].Category | uppercase}} for {{indicatorHistory[0].Country | uppercase}}</h3> -->
+<h3>History of {{country | uppercase }} for {{indicator }}</h3>
+
 <!-- <x-chartist
 [type]="type"
 [data]="data"
 [options]="options"
 [events]="events"
 ></x-chartist> -->
-<table>
+
+<!-- <div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div> -->
+<div *ngIf="chart">
+    
+  <canvas id="canvas">{{chart}}</canvas>
+</div>
+<!-- <table>
   <thead>
     <tr>
       <td>DateTime</td>
@@ -20,4 +38,4 @@
       <td>{{id.Frequency}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->

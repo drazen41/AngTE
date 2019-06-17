@@ -10,6 +10,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {  IBarChartOptions,IChartistAnimationOptions,IChartistData} from 'chartist';
 import { ChartEvent, ChartType } from 'ng-chartist';
 import * as Chartist from 'chartist';
+import {map} from 'rxjs/operators';
+import {Chart} from 'chart.js';
 
 @Component({
   selector: 'app-indicator-detail',
@@ -20,6 +22,9 @@ import * as Chartist from 'chartist';
 export class IndicatorDetailComponent implements OnInit {
   private indicatorHistory:TEIndicatorDetail[];
   public order = "DateTime";
+  chart: any[]=[];
+  country:string;
+  indicator:string;
   type: ChartType = 'Bar';
   data: IChartistData = {
     labels: [
@@ -62,24 +67,91 @@ export class IndicatorDetailComponent implements OnInit {
     }
   };
   
-  
+  //********* Ng2-charts start */
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  /* public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+  ]; */
+  public barChartLabels: string [] = [];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
+
+  public barChartData: any [] = [];
+  //******** Ng2-charts end */
   constructor(private indicatorService:IndicatorService,
     private route:ActivatedRoute,
     private location:Location,) { }
 
   ngOnInit() {
-    this.getIndicatorHistory();
-    
+    //this.getIndicatorHistory();
+    this.getIndicatorHistory1();
   }
   getIndicatorHistory():void{
     const country = this.route.snapshot.paramMap.get('country').split('-').join(' ');
     const indicator = this.route.snapshot.paramMap.get('indicator').split('-').join(' ');
+    this.country = country;
     this.indicatorService.getIndicatorHistory(country,indicator)
     .subscribe(data => this.indicatorHistory = data, err => console.log('Error getting history',err.getCode(),err.getError()),
   () => {
    
   });
- 
+  
   }
+  getIndicatorHistory1():void{
+    const country = this.route.snapshot.paramMap.get('country').split('-').join(' ');
+    const indicator = this.route.snapshot.paramMap.get('indicator').split('-').join(' ');
+    this.country = country;
+    this.indicator = indicator;
+    console.log(country);
+    this.indicatorService.getIndicatorHistory(country,indicator)
+    .subscribe(data => {
+      //console.log(data);
+      let dates = data.map(data => data.DateTime);
+      let val = data.map(data => data.Value);
+      this.country = country;
+      let newDates = [];
+      dates.forEach(date => {
+        let jsDate = new Date(date);
+        let newDate = jsDate.getFullYear() + '-' + jsDate.getMonth() + '-' + jsDate.getDay();
+        newDates.push(newDate);
+       
 
+      }); 
+      //console.log(newDates);
+      this.chart = new Chart('canvas',{
+        type:'bar',data: {
+          labels: newDates,
+          datasets: [{
+            data: val
+
+          }]
+        },
+        options:{
+          legend: {
+            display:false
+          },
+          scales: {
+            xAxes: [{
+              display:true
+            }],
+            yAxes:[{
+              display:true
+            }]
+          }
+        }
+      })
+
+
+
+      //console.log(data);
+    });
+
+  }
 }
