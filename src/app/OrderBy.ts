@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+/* import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({
     name: 'orderBy'
 })
@@ -39,4 +39,4 @@ export class OrderBy{
         
             return 0; //equal each other
     }
-}
+} */

@@ -20,6 +20,7 @@ import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.co
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { ChartistModule } from 'ng-chartist';
 import {ChartsModule} from 'ng2-charts';
+import { MychartComponent } from './mychart/mychart.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {ChartsModule} from 'ng2-charts';
     NewsComponent,
     IndicatorComponent,
     IndicatorDetailComponent,
+    MychartComponent,
 
   ],
   imports: [

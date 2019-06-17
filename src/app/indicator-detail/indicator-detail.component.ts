@@ -5,7 +5,7 @@ import {RatingService} from '../rating.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TEIndicatorDetail} from '../TEIndicatorDetail';
 import {IndicatorService} from '../indicator.service';
-import {OrderBy} from '../OrderBy';
+//import {OrderBy} from '../OrderBy';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {  IBarChartOptions,IChartistAnimationOptions,IChartistData} from 'chartist';
 import { ChartEvent, ChartType } from 'ng-chartist';
@@ -22,7 +22,7 @@ import {Chart} from 'chart.js';
 export class IndicatorDetailComponent implements OnInit {
   private indicatorHistory:TEIndicatorDetail[];
   public order = "DateTime";
-  chart: any[]=[];
+  chart = [];
   country:string;
   indicator:string;
   type: ChartType = 'Bar';
@@ -87,7 +87,7 @@ export class IndicatorDetailComponent implements OnInit {
   //******** Ng2-charts end */
   constructor(private indicatorService:IndicatorService,
     private route:ActivatedRoute,
-    private location:Location,) { }
+    private location:Location) { }
 
   ngOnInit() {
     //this.getIndicatorHistory();
@@ -114,19 +114,25 @@ export class IndicatorDetailComponent implements OnInit {
     .subscribe(data => {
       //console.log(data);
       let dates = data.map(data => data.DateTime);
-      let val = data.map(data => data.Value);
+      let val = data.map(data => +data.Value);
       this.country = country;
       let newDates = [];
       dates.forEach(date => {
         let jsDate = new Date(date);
-        let newDate = jsDate.getFullYear() + '-' + jsDate.getMonth() + '-' + jsDate.getDay();
+        let year = jsDate.getFullYear();
+        let month = jsDate.getMonth()+1;
+        let dan = jsDate.getDate();
+        
+        let newDate =year + "-" + month + "-" + dan;
         newDates.push(newDate);
-       
+       //console.log(year+'>'+month+'>'+dan);
 
       }); 
       //console.log(newDates);
+      
       this.chart = new Chart('canvas',{
-        type:'bar',data: {
+        type:'bar',
+        data: {
           labels: newDates,
           datasets: [{
             data: val
@@ -146,8 +152,9 @@ export class IndicatorDetailComponent implements OnInit {
             }]
           }
         }
-      })
-
+        
+      });
+      
 
 
       //console.log(data);
