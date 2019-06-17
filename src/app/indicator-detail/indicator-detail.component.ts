@@ -22,7 +22,7 @@ import {Chart} from 'chart.js';
 export class IndicatorDetailComponent implements OnInit {
   private indicatorHistory:TEIndicatorDetail[];
   public order = "DateTime";
-  chart = [];
+  chart:Chart;
   country:string;
   indicator:string;
   type: ChartType = 'Bar';

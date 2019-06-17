@@ -12,7 +12,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class RatingDetailComponent implements OnInit {
   @Input() rating:TERating;
-  private ratings:TERating[];
+  public ratings:TERating[];
   public country:string;
   constructor(
     private route:ActivatedRoute,
